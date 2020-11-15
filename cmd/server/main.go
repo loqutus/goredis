@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/loqutus/goredis/pkg/server/server"
 
 func main() {
-	fmt.Println("hui")
+	server.Serve()
 }
