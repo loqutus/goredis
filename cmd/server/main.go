@@ -1,7 +1,20 @@
 package main
 
-import "github.com/loqutus/goredis/pkg/server/server"
+import (
+	"fmt"
+	"os"
+
+	"github.com/loqutus/goredis/pkg/server/keys"
+	"github.com/loqutus/goredis/pkg/server/server"
+)
 
 func main() {
-	server.Serve()
+	arguments := os.Args
+	if len(arguments) == 1 {
+		fmt.Println("Please provide a port number!")
+		return
+	}
+	keys.Dict = make(map[string]string)
+	port := ":" + arguments[1]
+	server.Serve(port)
 }
